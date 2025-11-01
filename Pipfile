@@ -1,0 +1,24 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+fastapi = "*"
+uvicorn = "*"
+sqlalchemy = "*"
+asyncpg = "*"
+aiohttp = "*"
+python-dotenv = "*"
+psycopg2-binary = "*"
+streamlit = "*"
+folium = "*"
+streamlit-folium = "*"
+pandas = "*"
+requests = "*"
+
+[dev-packages]
+pytest = "*"
+
+[requires]
+python_version = "3.13"
