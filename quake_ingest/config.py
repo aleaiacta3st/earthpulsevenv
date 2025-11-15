@@ -30,6 +30,11 @@ config = {
         "DATABASE_URL": f"postgresql+asyncpg://postgres:{os.environ.get('DB_PASSWORD')}@db.render.com:5432/Earthquakes_Prod",
         "USGS_FEED_URL": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson",
         "POLL_INTERVAL": 300
+    },
+    "docker": {              
+        "DATABASE_URL": f"postgresql+asyncpg://postgres:{os.environ.get('DB_PASSWORD')}@host.docker.internal:5432/Earthquakes",
+        "USGS_FEED_URL": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson",
+        "POLL_INTERVAL": 300
     }
 }
 
