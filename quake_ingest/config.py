@@ -27,7 +27,7 @@ config = {
         "POLL_INTERVAL": 60  # Faster polling for tests
     },
     "production": {
-        "DATABASE_URL": f"postgresql+asyncpg://postgres:{os.environ.get('DB_PASSWORD')}@db.render.com:5432/Earthquakes_Prod",
+        "DATABASE_URL": os.environ.get('DATABASE_URL'),
         "USGS_FEED_URL": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson",
         "POLL_INTERVAL": 300
     },
