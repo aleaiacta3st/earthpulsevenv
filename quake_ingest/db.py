@@ -17,6 +17,9 @@ password=os.environ.get("DB_PASSWORD")
 
 DATABASE_URL = current_config["DATABASE_URL"]
 
+if DATABASE_URL and DATABASE_URL.startswith("postgresql://"):
+    DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://", 1)
+
 #create the async engine 
 #echo=true will print all SQL statements to console, useful for debugging 
 #Remember - May need to turn it off in production to decrease processing overhead
