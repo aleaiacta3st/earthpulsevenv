@@ -1,13 +1,23 @@
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from pydantic import BaseModel
 from datetime import datetime
-from quake_ingest.db import get_earthquakes
+from quake_ingest.db import get_earthquakes, init_db
 import asyncio
 from alerts_api.models import Earthquake
 import os
 
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup: create tables
+    await init_db()
+    yield
 
-app=FastAPI()
+app=FastAPI(lifespan=lifespan)
+
+@app.on_event("startup")
+async def startup():
+    await init_db()
 
 @app.get("/health")
 def health():
