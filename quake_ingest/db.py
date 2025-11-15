@@ -19,6 +19,9 @@ DATABASE_URL = current_config["DATABASE_URL"]
 
 if DATABASE_URL and DATABASE_URL.startswith("postgresql://"):
     DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://", 1)
+    # Remove sslmode parameter - asyncpg handles SSL differently
+    DATABASE_URL = DATABASE_URL.split("?")[0]
+    DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://", 1)
 
 #create the async engine 
 #echo=true will print all SQL statements to console, useful for debugging 
