@@ -9,7 +9,6 @@ import os
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Startup: create tables
     await init_db()
     yield
 

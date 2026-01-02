@@ -8,7 +8,7 @@ st.title("🌍 Earth Pulse")
 
 # Fetch data from API
 try:
-    response = requests.get("http://localhost:8000/alerts?limit=50")
+    response = requests.get("https://earthpulse-e965f2ce55ce.herokuapp.com/alerts?limit=50")
     data = response.json()
     
     if data:
