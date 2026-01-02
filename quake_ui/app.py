@@ -5,10 +5,13 @@ import folium
 from streamlit_folium import st_folium
 
 st.title("🌍 Earth Pulse")
+min_mag = st.slider("Minimum Magnitude", 0.0, 5.0, 0.0, 0.1)
+if st.button("🔄 Refresh Data"):
+    st.rerun()
 
 # Fetch data from API
 try:
-    response = requests.get("https://earthpulse-e965f2ce55ce.herokuapp.com/alerts?limit=50")
+    response = requests.get(f"https://earthpulse-e965f2ce55ce.herokuapp.com/alerts?limit=50&min_magnitude={min_mag}")
     data = response.json()
     
     if data:
